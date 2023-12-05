@@ -9,6 +9,8 @@ function App() {
   const [inputData, setInputData] = useState("");
   const [buttonText, setButtonText] = useState("Save");
   const [indexVal, setIndexVal] = useState(0);
+  const title = ["SAMPLE TO DO APP", "TO DO APP", "TO DO"];
+
   function submitButton() {
     if (buttonText === "Save") {
       if (inputData != "") {
@@ -47,15 +49,19 @@ function App() {
 
   function handleCheckboxChange(e, index) {
     console.log("id: " + index + " - check: " + e.target.checked);
-   
   }
-  
+
   function handelAllDeleteButton() {
     setArrData([]);
+  }
+  function genRandom(max) {
+    console.log(Math.floor(Math.random() * (max + 1)));
+    return Math.floor(Math.random() * (max + 1));
   }
 
   return (
     <div className="App">
+      <h2 style={{color:"blue"}} >{title[genRandom(2)]}</h2>
       <Form.Label htmlFor="inputPassword5">Text:</Form.Label>
       <br></br>
       <Form.Control
@@ -75,7 +81,7 @@ function App() {
       <Button variant="danger" onClick={handelAllDeleteButton} type="submit">
         Delete All
       </Button>
-   
+
       <br></br>
 
       <Table striped bordered hover>
